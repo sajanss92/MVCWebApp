@@ -1,0 +1,75 @@
+﻿@model Service.ViewModels.EmployeeViewModel
+@{
+    ViewData["Title"] = "EditEmployee";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+<h3 class="display-4">Update Employee Profile</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-controller="Account" asp-action="UpdateEmployee">
+            <div class="form-group">
+                <label asp-for="EmpId"> Employee Id</label>
+                <input asp-for="EmpId" class="form-control" readonly />
+                <span class="text-danger field-validation-error" asp-validation-for="EmpId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name"> Employee Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span class="text-danger field-validation-error" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email Id</label>
+                <input asp-for="Email" class="form-control" />
+                <span class="text-danger field-validation-error" asp-validation-for="Email"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile">Mobile</label>
+                <input asp-for="Mobile" class="form-control" />
+                <span class="text-danger field-validation-error" asp-validation-for="Mobile"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob">Date of Birth</label>
+                <input asp-for="Dob" class="form-control" type="date" />
+                <span class="text-danger field-validation-error" asp-validation-for="Dob"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team">Team</label>
+                <input asp-for="Team" class="form-control" list="Teams" />
+                <datalist id="Teams">
+                    <option value="Development" />
+                    <option value="QA" />
+                    <option value="Accounts" />
+                </datalist>
+                <span class="text-danger field-validation-error" asp-validation-for="Team"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doj">Date of Joining</label>
+                <input asp-for="Doj" class="form-control" type="date" />
+                <span class="text-danger field-validation-error" asp-validation-for="Dob"></span>
+            </div>
+            <div class="form-group" style="display: none;">
+                <label asp-for="CreatedOn">Date of Joining</label>
+                <input asp-for="CreatedOn" class="form-control" type="date" readonly />
+                <span class="text-danger field-validation-error" asp-validation-for="CreatedOn"></span>
+            </div>
+            <div class="form-group" style="display: none;">
+                <label asp-for="UpdatedOn">Date of Joining</label>
+                <input asp-for="UpdatedOn" class="form-control" type="date" readonly />
+                <span class="text-danger field-validation-error" asp-validation-for="UpdatedOn"></span>
+            </div>
+            <div>
+                <button id="updateBtn" type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("/Views/Shared/_ValidationScriptsPartial.cshtml")
+}
+
+
